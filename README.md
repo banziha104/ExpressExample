@@ -308,3 +308,37 @@ var expressErrorHandler = require('express-error-handler');
  app.use(errorHandler);
 
  ```
+
+## 쿠키 사용하기
+쿠키 : 클라이언트 웹 브라우저에 저장되는 정보
+
+```
+npm install cookie-parser
+```
+
+```javascript
+//쿠키 객체 참조
+var cookieParser = require('cookie-parser');
+app.use(cookieParser());
+
+//쿠키 보여주기
+router.route('/process/showCookie').get(function (req,res) {
+    console.log('/process/showCookie 호출됨');
+    res.send(req.cookies);
+});
+//요청이 들어오면 쿠키를 생성하고전달
+router.route('/process/setUserCookie').get(function (req, res) {
+    console.log('/processs/setUserCookie 호출됌');
+   res.cookie('user',{
+      id : 'mike',
+      name : '소녀시대',
+      authorized : true
+   });
+   res.redirect('/process/showCookie');
+});
+
+```
+
+## 세션 사용하기
+세션 : 서버에 저장되는 정보.
+
