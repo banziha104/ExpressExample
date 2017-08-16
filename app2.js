@@ -7,7 +7,7 @@ app.set('port',process.env.PORT || 3000);
 //첫 번째 미들웨어
 app.use(function (req,res,next) {
    req.user = 'mike';
-   next();
+   next();f
 });
 //두 번째 미들웨어
 app.use('/',function (req,res,next) {
